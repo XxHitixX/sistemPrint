@@ -1,0 +1,21 @@
+<h1>Categorías - <small>Crear categoría</small>
+<a routerLink="/protected/categorias" class="btn btn-primary float-end">Ver categorías</a>
+</h1>
+<hr>
+
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label for="nombre">Nombre de la categoría</label>
+                <input type="text" formControlName="nombre"
+                        class="form-control" 
+                        placeholder="papelería"/>
+            </div>
+            <button class="btn btn-success float-end" type="submit"
+                    [disabled]="miFormulario.invalid">Guardar</button>
+        </div>
+
+    </div>
+    
+</form>

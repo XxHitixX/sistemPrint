@@ -1,0 +1,37 @@
+
+<h1>Clientes - <small>Lista de clientes</small>
+<a class="btn btn-primary float-end" routerLink="/protected/clientes/crearCliente" >Nuevo cliente</a></h1>
+<hr>
+
+<div class="alert alert-info" *ngIf="!clientes; else contenido">
+    <strong>Cargando...</strong>
+</div>
+
+<ng-template #contenido>
+    <div class="row container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Cedula</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Direccion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody #divDatos>
+                <tr *ngFor="let cliente of clientes; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.cedula }}</td>
+                    <td>  {{ cliente.telefono }} </td>
+                    <td> {{ cliente.correo }} </td>
+                    <td> {{ cliente.direccion }}</td>
+                    <td> <a [routerLink]="['/protected/clientes/editarCliente', cliente.id]" class="btn btn-warning"> <i class="bi bi-pencil-square"></i></a> <!-- | <a class="btn btn-danger"><i class="bi bi-x-octagon"></i> </a> --></td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+</ng-template>

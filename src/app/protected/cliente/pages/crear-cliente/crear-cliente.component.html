@@ -1,0 +1,66 @@
+<h1>Clientes - <small> {{ (cliente.id) ? 'Actualizar ' : 'Nuevo ' }}cliente</small>
+    <a routerLink="/protected/clientes/clientes" class="btn btn-primary float-end">Ver clientes</a>
+</h1>
+<hr>
+
+<form [formGroup]="miFormulario" 
+       autocomplete="off"
+       (ngSubmit)="guardar()">
+
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre completo</label>
+                <input type="text" id="nombre" 
+                        formControlName="nombre"
+                        class="form-control" 
+                        placeholder="Ponchito Tirado Socarras">
+            </div>
+            
+            <div class="mb-3">
+                <label for="cedula" class="form-label">Identificación</label>
+                <input type="text" id="cedula" 
+                        formControlName="cedula"
+                        class="form-control" 
+                        placeholder="1124410092">
+            </div>
+
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input type="tel" id="telefono" 
+                        class="form-control" 
+                        formControlName="telefono"
+                        placeholder="3225362523">
+            </div>
+
+
+        </div>
+        <div class="col-6">
+
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" 
+                        class="form-control" 
+                        formControlName="direccion"
+                        placeholder="Calle 14 D # 20 - 37">
+            </div>
+
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo electrónico</label>
+                <input type="email" id="nombre" 
+                        class="form-control" 
+                        formControlName="correo"
+                        placeholder="ponchito@sistemprint.com">
+            </div>
+
+
+        </div>
+        <div class="col-8"></div>
+        <div class="col-4">
+            <button type="submit" 
+                    class="btn btn-success float-end"
+                    [disabled]="miFormulario.invalid">{{ (cliente.id) ? 'Actualizar' : 'Guardar'  }}</button>
+        </div>
+
+    </div>
+</form>

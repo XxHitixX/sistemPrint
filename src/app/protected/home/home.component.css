@@ -1,0 +1,13 @@
+#footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 72%;
+    height: 40px;
+    color: white;
+}
+
+
+ul {
+    cursor: pointer;
+}
