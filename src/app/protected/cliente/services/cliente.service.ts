@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Cliente, ClienteResponse, ClienteResponse2 } from '../interfaces/cliente.interface';
+import { BuscarCliente, Cliente, ClienteResponse, ClienteResponse2 } from '../interfaces/cliente.interface';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -15,6 +15,9 @@ export class ClienteService {
   cliente !: Cliente;
 
 
+  get listaCliente(){
+    return { ...this.clientes }
+  }
 
   constructor(private http : HttpClient) { }
 
@@ -46,4 +49,10 @@ export class ClienteService {
     const headers = new HttpHeaders().set('x-token', token || '');
     return this.http.put<Cliente>(`${this.baseUrl}/clientes/${cliente.id}`, cliente ,{  headers })
   }
+
+  buscarClienteCedula(termino : string){
+    return this.http.get<any>(`${this.baseUrl}/buscar/clientes/${termino}`)
+  }
+
+
 }

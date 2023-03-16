@@ -1,1 +1,39 @@
-<p>facturas works!</p>
+<h1>Facturas - <small>Lista de ventas realizadas</small></h1>
+<hr>
+
+<div class="spinner-border text-danger" role="status" *ngIf="!facturas; else contenido" >
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+<ng-template #contenido>
+    <div class="row container mt-3">
+        <table class="table table-striped">
+            <thead>
+                <th>ID</th>
+                <th>F. Factura</th>
+                <th>Cliente</th>
+                <th>Usuario</th>
+                <th>T. pago</th>
+                <th>Total</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let factura of facturas">
+                    <td> {{ factura._id }} </td>
+                    <td> {{ factura.fecha |date:'short' }} </td>
+                    <td> {{ factura.cliente?.nombre }} </td>
+                    <td> {{ factura.usuario?.nombre }} </td>
+                    <td> {{ factura.tipoPago }} </td>
+                    <td>{{ factura.total| currency:'COP':'symbol-narrow':'4.2-2' }}</td>
+                    <td class="text-center"> <a class="btn btn-warning"> <i class="bi bi-eye"></i></a> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="centrado">
+        <button class="btn btn-primary" (click)="prevPage()" >{{ '<<' }}</button>
+        <button class="btn btn-primary" (click)="nextPage()">{{ '>>' }}</button>
+    </div>
+</ng-template>
+<!-- [disabled]="(facturas | filtro:page).length === 0"> -->
+

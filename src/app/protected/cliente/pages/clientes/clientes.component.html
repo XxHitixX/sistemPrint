@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody #divDatos>
-                <tr *ngFor="let cliente of clientes; let i = index">
+                <tr *ngFor="let cliente of clientes | filtro:page ; let i = index">
                     <td>{{ i + 1 }}</td>
                     <td>{{ cliente.nombre }}</td>
                     <td>{{ cliente.cedula }}</td>
@@ -33,5 +33,10 @@
                 </tr>
             </tbody>
         </table>    
+    </div>
+    <div class="centrado">
+        <button class="btn btn-primary" (click)="prevPage()" >{{ '<<' }}</button>
+        <button class="btn btn-primary" (click)="nextPage()"
+        [disabled]="(clientes | filtro:page).length === 0">{{ '>>' }}</button>
     </div>
 </ng-template>

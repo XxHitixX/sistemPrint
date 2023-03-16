@@ -13,7 +13,7 @@ const routes: Routes = [
         component: CrearProductoComponent
       },
       {
-        path: 'verProducto',
+        path: 'verProducto/:id',
         component: VerProductoComponent
       },
       {

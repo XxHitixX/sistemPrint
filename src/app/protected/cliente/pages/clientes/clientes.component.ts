@@ -6,10 +6,12 @@ import { ClienteService } from '../../services/cliente.service';
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styles: [
+
   ]
 })
 export class ClientesComponent implements OnInit {
 
+  page : number = 0;
 
   clienteResponse !: ClienteResponse;
   clientes !: Cliente[];
@@ -23,4 +25,14 @@ export class ClientesComponent implements OnInit {
           this.clientes = this.clienteResponse.clientes
         })
   }
+
+  nextPage(){
+    this.page += 10;
+  }
+
+  prevPage(){
+    this.page -= 10;
+  }
+
+
 }

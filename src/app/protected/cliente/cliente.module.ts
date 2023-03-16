@@ -6,13 +6,15 @@ import { ClienteRoutingModule } from './cliente-routing.module';
 import { CrearClienteComponent } from './pages/crear-cliente/crear-cliente.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { VerClienteComponent } from './pages/ver-cliente/ver-cliente.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 
 @NgModule({
   declarations: [
     CrearClienteComponent,
     ClientesComponent,
-    VerClienteComponent
+    VerClienteComponent,
+    FiltroPipe
   ],
   imports: [
     CommonModule,

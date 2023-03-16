@@ -15,6 +15,9 @@
                         formControlName="nombre"
                         class="form-control" 
                         placeholder="Ponchito Tirado Socarras">
+                        <span class="form-text text-danger" *ngIf="esValido('nombre')">
+                            El nombre debe tener mínimo 2 letras
+                        </span>
             </div>
             
             <div class="mb-3">
@@ -23,6 +26,9 @@
                         formControlName="cedula"
                         class="form-control" 
                         placeholder="1124410092">
+                        <span class="form-text text-danger" *ngIf="esValido('cedula')">
+                            La cedula debe ser de tipo númerico y minimo 6 cifras.
+                        </span>
             </div>
 
             <div class="mb-3">
@@ -31,6 +37,9 @@
                         class="form-control" 
                         formControlName="telefono"
                         placeholder="3225362523">
+                        <span class="form-text text-danger" *ngIf="esValido('telefono')">
+                            El telefono debe ser de tipo númerico.
+                        </span>
             </div>
 
 
@@ -43,6 +52,9 @@
                         class="form-control" 
                         formControlName="direccion"
                         placeholder="Calle 14 D # 20 - 37">
+                        <span class="form-text text-danger" *ngIf="esValido('direccion')">
+                            El campo es obligatorio
+                        </span>
             </div>
 
             <div class="mb-3">
@@ -51,6 +63,9 @@
                         class="form-control" 
                         formControlName="correo"
                         placeholder="ponchito@sistemprint.com">
+                        <span class="form-text text-danger" *ngIf="esValido('correo')">
+                            El campo debe tener pinta de correo
+                        </span>
             </div>
 
 

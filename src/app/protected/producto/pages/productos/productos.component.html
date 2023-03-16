@@ -1,4 +1,6 @@
-<h1>Productos - <small>Lista de productos</small></h1>
+<h1>Productos - <small>Lista de productos</small>
+<a routerLink="/protected/productos/crearProducto" class="btn btn-primary float-end">Nuevo producto</a>
+</h1>
 <hr>
 
 
@@ -20,32 +22,30 @@
                     <th>Proveedor</th>
                     <th>Existencias</th>
                     <th>Categoría</th>
-                    <!-- <th>Descripción</th> -->
                     <th>Acciones</th> 
             </thead>
-            <tbody>
+            <tbody> <!--  -->
                 <tr *ngFor="let producto of productos | filtro:page; let i = index">
                     <td> {{ i + 1 }} </td>
                     <!-- <td> {{ producto._id }} </td> -->
                     <td> {{ producto.nombre  }} </td>
                     <td> {{ producto.costo | currency }} </td>
                     <td> {{ producto.precio | currency  }} </td>
-                    <td> {{ producto.proveedor }} </td>
+                    <td> {{ producto.proveedor | uppercase }} </td>
                     <td> {{ producto.stock | number }} </td>
                     <td> {{ producto.categoria?.nombre }} </td>
-                    <!-- <td> {{ producto.descripcion }} </td> -->
-                    <td> <a class="btn btn-warning" routerLink="['/protected/productos/verProducto/', producto._id]">
-                        <i class="bi bi-pencil-square"></i></a></td>
+                    <td> <a class="btn btn-warning" [routerLink]="['/protected/productos/verProducto/', producto._id]">
+                        <i class="bi bi-eye"></i></a></td>
                 </tr>
             </tbody>
         </table>
     </div>
     
-    <div class="text-center">
+    <div class="centrado">
         <button class="btn btn-primary" (click)="prevPage()"> {{ '<<' }} </button>
         <button class="btn btn-primary" 
             (click)="nextPage()"
             [disabled]="(productos | filtro:page).length === 0"> {{ '>>' }} </button>
-    </div>
+    </div> 
 
 </ng-template>

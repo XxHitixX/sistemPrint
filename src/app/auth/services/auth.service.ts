@@ -29,7 +29,8 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${this.baseUrl}/auth/login`, body)
       .pipe(
         tap(respuesta => {
-          if (respuesta.ok) {
+          //Antes estaba if(respuesta === ok)
+          if (respuesta) {
             localStorage.setItem('token', respuesta.token!);
             localStorage.setItem('uid', respuesta.usuario?.uid!);
             this._usuario = {

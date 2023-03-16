@@ -6,13 +6,15 @@ import { CategoriaRoutingModule } from './categoria-routing.module';
 import { CrearCategoriaComponent } from './pages/crear-categoria/crear-categoria.component';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { VerCategoriaComponent } from './pages/ver-categoria/ver-categoria.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 
 @NgModule({
   declarations: [
     CrearCategoriaComponent,
     CategoriasComponent,
-    VerCategoriaComponent
+    VerCategoriaComponent,
+    FiltroPipe
   ],
   imports: [
     CommonModule,

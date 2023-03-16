@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    height: 750px;
+    height: 100%;
     margin: 0;
     margin-bottom: 40px;
 }
@@ -14,4 +14,28 @@ body {
 #sidenav{
     height: 100%;
     width: auto;
+}
+
+.centrado button{
+    display: inline;
+    margin-right: 5px;
+  }
+
+.centrado {
+    text-align: center;
+  }
+
+  #footer{
+    margin-top: 10rem;
+    border-top: 1px solid #e1e1e1;
+    padding-top: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+   /*  background-color: #e1e1e1; */
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }

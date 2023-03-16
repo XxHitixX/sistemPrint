@@ -106,7 +106,10 @@ export class CrearClienteComponent implements OnInit {
 
   }
 
-
+esValido(campo : string){
+  return this.miFormulario.controls[`${campo}`].touched &&
+      this.miFormulario.controls[`${campo}`].errors
+}
 
 
 }

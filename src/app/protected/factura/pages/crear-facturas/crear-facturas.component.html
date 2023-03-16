@@ -1,1 +1,128 @@
-<p>crear-facturas works!</p>
+<h1>Factura de Venta - <small>Nueva venta</small></h1>
+<hr>
+
+
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+  <div class="row container">
+
+    <div class="mb-3">
+
+      <!-- Buscar cliente -->
+      <div class="row">
+        <div class="col-10">
+          <!-- <label for="cliente" class="form-label"> Cliente: </label> -->
+          <input type="text" class="form-control" 
+            placeholder="busca por nombre o cedula"
+            formControlName="cliente" (keyup)="buscarCliente()" list="clientes">
+           <ul class="list-group"
+            *ngFor="let cliente of clientes">
+            <li class="list-group-item" 
+              (click)="clienteSeleccionado(cliente)"> {{ cliente.nombre + " |   C.c: " + cliente.cedula  }} </li>
+          </ul>
+         
+        </div>
+
+        <div class="col-2">
+          <a (click)="buscarCliente()" class="btn btn-success"><i class="bi bi-search-heart"></i></a>
+        </div>
+      </div>
+
+      <!-- <select formControlName="cliente" id="cliente" class="form-select">
+        <option *ngFor="let cliente of clientes" value="{{cliente.id}}">{{ cliente.nombre }}</option>
+      </select> -->
+
+    </div>
+    <div class="mb-3">
+      <div class="row">
+        <div class="col-6">
+          <label class="form-label">Nombre</label>
+          <input type="text" [value]="cliente.nombre" class="form-control" disabled>
+
+          <label class="form-label">Telefono</label>
+          <input type="text" [value]="cliente.telefono" class="form-control" disabled>
+
+
+        </div>
+
+        <div class="col-6">
+          <label class="form-label">Cedula</label>
+          <input type="text" [value]="cliente.cedula" class="form-control" disabled>
+
+          <label class="form-label">Correo</label>
+          <input type="text" [value]="cliente.correo" class="form-control" disabled>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="mb-3">
+      <label for="producto" class="form-label"> Producto: </label>
+      <select formControlName="producto" id="producto" class="form-select" #ProductoFocu>
+        <option *ngFor="let producto of productos" value="{{ producto._id }}"> {{ producto.nombre }} </option>
+      </select>
+    </div>
+    <div class="col-6">
+      <div class="mb-3">
+        <label for="cantidad" class="form-label"> Cantidad: </label>
+        <input #canti formControlName="cantidad" type="number" class="form-control"
+               (keyup.enter)="agregarProducto()" />
+      </div>
+      <a class="btn btn-warning flex-end" (click)="agregarProducto()">Añadir</a>
+
+    </div>
+    <div class="col-6"></div>
+
+    <!-- Comienza el detalle de factura -->
+
+    <h3 class="text-center">--- Detalle de venta ---</h3>
+    <div class="contenedor-venta">
+      <ol class="list-group list-group-numbered">
+        <li *ngFor="let item of productoItem" 
+            class="list-group-item d-flex justify-content-between align-items-start"
+            >
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">{{ item.id | nombre | async }}</div>
+            <!-- Content for list item -->
+          </div>
+          <span class="badge bg-primary rounded-pill">
+          {{ item.cantidad }}
+        </span>
+          
+        </li>
+      </ol>
+
+    </div>
+
+  </div>
+  <!-- Termina detalle de factura -->
+
+
+  <div class="row mt-3 mb-3">
+    <nav class="resultado">
+      <!-- <div>
+        <label class="form-label"><strong>{{ 'Subtotal:' | uppercase}} </strong></label>
+        <label class="form-label text-danger"
+          style="margin-left: 1rem; font-size: 2rem;"><strong>${{'0.0'}}</strong></label>
+      </div> -->
+      <!-- <div>
+        <div class="float-end">
+          <label class="form-label"><strong>{{ 'iva 19%:' | uppercase}} </strong></label>
+          <label class="form-label text-danger"
+            style="margin-left: 1rem; font-size: 2rem;"><strong>${{'0.0'}}</strong></label>
+        </div>
+      </div> -->
+      <div>
+        <div class="mb-2 float-end">
+          <label class="form-label"><strong>{{ 'Total:' | uppercase}} </strong></label>
+          <label class="form-label text-success" style="margin-left: 1rem; font-size: 2rem;"><strong>${{ total
+              }}</strong></label>
+        </div>
+      </div>
+    </nav>
+
+  </div>
+
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+  </div>
+</form>

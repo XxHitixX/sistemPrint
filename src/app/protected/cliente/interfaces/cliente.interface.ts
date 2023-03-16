@@ -19,3 +19,7 @@ export interface Cliente {
     correo:    string;
     direccion: string;
 }
+
+export interface BuscarCliente {
+    results?: Cliente[];
+}

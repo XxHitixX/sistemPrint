@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Factura } from '../../interfaces/factura.interface';
+import { FacturaService } from '../../services/factura.service';
 
 @Component({
   selector: 'app-facturas',
@@ -8,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FacturasComponent implements OnInit {
 
-  constructor() { }
+  page : number = 0;
+ 
+  facturas !: Factura[] | undefined;
+
+  constructor(private facturaService : FacturaService) { }
 
   ngOnInit(): void {
+    this.facturaService.getFacturas()
+        .subscribe( facturas => this.facturas = facturas)
+  }
+
+  prevPage(){
+    this.page -= 10    
+  }
+  nextPage(){
+    this.page += 10    
   }
 
 }

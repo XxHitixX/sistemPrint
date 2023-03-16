@@ -1,43 +1,76 @@
-<h1> Productos - <small>Crear producto </small> </h1>
+<h1> Productos - <small>Crear producto </small> 
+<a routerLink="/protected/productos" class="btn btn-primary float-end">Ver productos</a>
+</h1>
 <hr>
 
-<form action="">
+<form (ngSubmit)="guardar()" [formGroup]="miFormulario" autocomplete="off">
+
     <div class="row container">
+
         <div class="col-6">
+
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre">
+                <input type="text" class="form-control" formControlName="nombre">
+                <span class="form-text text-danger" *ngIf="esValido('nombre')">
+                    El campo debe tener mínimo 2 letras
+                </span>
             </div>
+
             <div class="mb-3">
                 <label for="costo" class="form-label">Costo</label>
-                <input type="text" class="form-control" name="costo">
+                <input type="number" class="form-control" formControlName="costo">
+                <span class="form-text text-danger"  *ngIf="esValido('costo')">
+                    El campo debe ser un numero mayor a $100
+                </span>
             </div>
+
             <div class="mb-3">
                 <label for="precio" class="form-label">Precio</label>
-                <input type="text" class="form-control" name="precio">
+                <input type="number" class="form-control" formControlName="precio">
+                <span class="form-text text-danger" *ngIf="esValido('precio')">
+                    El campo debe ser un numero mayor a $100
+                </span>
             </div>
+
             <div class="mb-3">
                 <label for="proveedor" class="form-label">Proveedor</label>
-                <input type="text" class="form-control" name="proveedor">
+                <input type="text" class="form-control" formControlName="proveedor">
+                <span class="form-text text-danger" *ngIf="esValido('proveedor')">
+                    El campo no puede estar vacío
+                </span>
             </div>
+
         </div>
+
         <div class="col-6">
             <div class="mb-3">
-                <label for="proveedor" class="form-label">Existencias</label>
-                <input type="text" class="form-control" name="proveedor">
+                <label for="existencias" class="form-label">Existencias</label>
+                <input type="number" class="form-control" formControlName="existencias">
+                <span class="form-text text-danger"
+                    *ngIf="esValido('existencias')">
+                    El campo debe ser un numero. Valor minimo 1
+            </span>
             </div>
+
             <div class="mb-3">
-                <label for="categoria" class="form-label">Existencias</label>
-                <select class="form-select" name="categoria" id="categoria">
-                    <option value="valor">Valor 1</option>
+                <label for="categoria" class="form-label">Categoria</label>
+                <select class="form-select" formControlName="categoria" id="categoria">
+                    <option *ngFor="let categoria of categorias" value="{{categoria._id}}">{{ categoria.nombre }}
+                    </option>
                 </select>
+                <span class="form-text text-danger"
+                    *ngIf="esValido('categoria')">
+                    La categoria es obligatoria
+            </span>
             </div>
 
             <div class="mb-3">
                 <label for="categoria" class="form-label">Descripción</label>
-                <textarea class="form-control" cols="20" rows="5" type="search"></textarea>
+                <textarea class="form-control" formControlName="descripcion" cols="20" rows="5"
+                    type="search"></textarea>
             </div>
         </div>
     </div>
-    <button class="btn btn-primary float-end">Guardar</button>
+    <button [disabled]="miFormulario.invalid" class="btn btn-success float-end">Guardar</button>
 </form>
