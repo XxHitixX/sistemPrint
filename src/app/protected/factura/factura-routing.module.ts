@@ -13,7 +13,7 @@ const routes: Routes = [
         component: CrearFacturasComponent
       },
       {
-        path: 'verFactura',
+        path: 'verFactura/:id',
         component: VerFacturaComponent
       },
       {

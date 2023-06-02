@@ -9,6 +9,7 @@ import { itemProducto, Factura, FacturaGuardar } from '../../interfaces/factura.
 import { FacturaService } from '../../services/factura.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ProductoActualizado } from '../../../producto/interfaces/producto.interface';
 
 @Component({
   selector: 'app-crear-facturas',
@@ -53,7 +54,7 @@ export class CrearFacturasComponent implements OnInit {
   factura !: FacturaGuardar;
   existencias : Number  = 0;
   productoXActualizar !: Producto;
-  productoXActualizado !: Producto;
+  productoActualizado !: ProductoActualizado;
   
 
   total : number = 0;
@@ -102,41 +103,29 @@ export class CrearFacturasComponent implements OnInit {
           
           return;
 
-        } 
+        } else {
+
+          const cantidad = Number(this.cantida.nativeElement.value);
+          this.productosItem?.push(producto)
+          const precio = Number(producto.precio);
+          const total = precio * cantidad;
+          this.total += total; 
+          
+          this.productoItem.push({
+            _id: this.miFormulario.controls['producto'].value,
+            cantidad: this.miFormulario.controls['cantidad'].value
+          })
+
+          this.actualizarProducto();
+      
+          this.productoFocus.nativeElement.focus();
+
+        }
         
-        const cantidad = Number(this.cantida.nativeElement.value);
-        this.productosItem?.push(producto)
-        const precio = Number(producto.precio);
-        const total = precio * cantidad;
-        this.total += total; 
+        
       });
 
 
-      if(this.existencias < Number(this.cantida.nativeElement.value)){
-        return;
-      }else{
-        
-        //TODO: Toca repensar nuevamente este cuento, el tipado me esta molestando bastante
-
-        /* this.productoXActualizado = {
-          nombre: this.productoXActualizar.nombre,
-          stock: this.productoXActualizar.stock - Number(this.cantida.nativeElement.value),
-          categoria: this.productoXActualizar.categoria
-        } */
-        
-        this.productoService.actualizarProducto(this.miFormulario.controls['producto'].value, this.productoXActualizado)
-            .subscribe(resp =>{
-              console.log(resp);
-            }  )
-
-
-        this.productoItem.push({
-          id: this.miFormulario.controls['producto'].value,
-          cantidad: this.miFormulario.controls['cantidad'].value
-        })
-    
-        this.productoFocus.nativeElement.focus();
-      }
 
    
     
@@ -177,6 +166,25 @@ export class CrearFacturasComponent implements OnInit {
 clienteSeleccionado(cliente : Cliente){
   this.cliente = cliente;
   this.productoFocus.nativeElement.focus();
+
+}
+
+actualizarProducto(){
+
+    //TODO: Toca repensar nuevamente este cuento, el tipado me esta molestando bastante
+
+     this.productoActualizado = {
+      nombre: this.productoXActualizar.nombre,
+      stock: this.productoXActualizar.stock - Number(this.cantida.nativeElement.value),
+      categoria: this.productoXActualizar.categoria?._id,
+    }
+    
+    this.productoService.actualizarProducto(this.miFormulario.controls['producto'].value, this.productoActualizado)
+        .subscribe(resp =>{
+          console.log(this.miFormulario.controls['producto'].value);
+          console.log("==================================");
+          console.log(resp);
+        }  )
 
 }
 

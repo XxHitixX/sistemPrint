@@ -57,6 +57,10 @@
     </div>
     <div class="mb-3">
       <label for="producto" class="form-label"> Producto: </label>
+<!--       <input list="productos" id="producto" name="productos">
+      <datalist id="productos">
+        <option value="{{ producto._id }}" *ngFor="let producto of productos">{{ producto.nombre }}</option>
+      </datalist> -->
       <select formControlName="producto" id="producto" class="form-select" #ProductoFocu>
         <option *ngFor="let producto of productos" value="{{ producto._id }}"> {{ producto.nombre }} </option>
       </select>
@@ -81,7 +85,7 @@
             class="list-group-item d-flex justify-content-between align-items-start"
             >
           <div class="ms-2 me-auto">
-            <div class="fw-bold">{{ item.id | nombre | async }}</div>
+            <div class="fw-bold">{{ item._id | nombre | async }}</div>
             <!-- Content for list item -->
           </div>
           <span class="badge bg-primary rounded-pill">

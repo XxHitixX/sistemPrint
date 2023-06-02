@@ -1,0 +1,50 @@
+{
+    "_id": "63b4dbfbb0a5d69caa3d0f86",
+    "usuario": {
+        "_id": "63665be3d6c1b7e6d8da7f26",
+        "nombre": "test"
+    },
+    "cliente": {
+        "_id": "63b01695fac79f37d7c858ad",
+        "nombre": "Emily Borely"
+    },
+    "tipoPago": "tarjeta",
+    "estado": false,
+    "total": 1000,
+    "items": [
+        {
+            "producto": {
+                "costo": 0,
+                "_id": "63afa91509cefac602c37b92",
+                "nombre": "COPIA CARTA",
+                "precio": 200,
+                "stock": 0
+            },
+            "cantidad": 3,
+            "_id": "63b757941e9430ac04fa0675"
+        },
+        {
+            "producto": {
+                "costo": 0,
+                "_id": "63afa91509cefac602c37b92",
+                "nombre": "COPIA CARTA",
+                "precio": 200,
+                "stock": 0
+            },
+            "cantidad": 1,
+            "_id": "63b757941e9430ac04fa0676"
+        },
+        {
+            "producto": {
+                "costo": 0,
+                "_id": "63afa99d20827093994d0d3d",
+                "nombre": "SACAPUNTA",
+                "precio": 800,
+                "stock": 5
+            },
+            "cantidad": 1,
+            "_id": "63b757941e9430ac04fa0677"
+        }
+    ],
+    "fecha": "2023-01-04T01:52:59.157Z"
+}

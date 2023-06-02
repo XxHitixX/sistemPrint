@@ -9,6 +9,7 @@ import { FacturasComponent } from './pages/facturas/facturas.component';
 import { CrearFacturasComponent } from './pages/crear-facturas/crear-facturas.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { NombrePipe } from './pipes/nombre.pipe';
+import { PrecioPipe } from './pipes/precio.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { NombrePipe } from './pipes/nombre.pipe';
     FacturasComponent,
     CrearFacturasComponent,
     FiltroPipe,
-    NombrePipe
+    NombrePipe,
+    PrecioPipe
   ],
   imports: [
     CommonModule,

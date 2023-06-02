@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { environment } from 'src/environments/environment';
 
-import { getProductoResponse, Producto, ProductoResponse } from '../interfaces/producto.interface';
+import { getProductoResponse, Producto, ProductoResponse, ProductoActualizado } from '../interfaces/producto.interface';
 import { map, tap } from 'rxjs/operators';
 
 
@@ -33,7 +33,7 @@ export class ProductoService {
   }
 
   getProducto(id : string):Observable<Producto>{
-    const url : string = `${this.baseUrl}/productos/`
+    const url : string = `${this.baseUrl}/productos`
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')  || '');
     return this.http.get<getProductoResponse>(`${url}/${id}`, { headers })
         .pipe(
@@ -41,10 +41,11 @@ export class ProductoService {
         )
   }
 
-  actualizarProducto(id : string, producto : Producto){
-    const url : string = `${this.baseUrl}/productos/`
+  actualizarProducto(id : string, producto : any){
+    const url : string = `${this.baseUrl}/productos`
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')  || '');
-    return this.http.put<ProductoResponse>(`${url} ${id}`, producto, { headers })
+
+    return this.http.put<ProductoResponse>(`${url}/${id}`, producto, { headers })
   }
 
 }

@@ -1,1 +1,42 @@
-<p>ver-factura works!</p>
+<h1>Factura {{factura._id}}</h1>
+<hr>
+
+<form [formGroup]="miFormulario">
+    <div class="row mb-3">
+        <span class="text-warning mb-4">Factura generada el {{ factura.fecha | date }}</span>
+        <div class="col-12">
+            <div class="mb-2">
+                <label for="nombre" class="text-label">Nombre</label>
+                <input type="text" formControlName="nombre" 
+                        id="nombre" class="form-control"
+                        readonly>
+            </div>
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <th>Item</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items; let i = index">
+                        <td> {{ i + 1 }} </td>
+                        <td> {{ '' }} </td>
+                        <td> {{ item.cantidad }} </td>
+                        <td> {{ '' }}</td>
+                        <td> {{ '' }} </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 class="float-end">Total: <span class="text-danger">{{factura.total | currency}}</span></h3>
+        </div>
+    
+        <span class="text-light mt-5 manchadito">Venta realizada por: {{ factura.usuario?.nombre }}</span>
+    </div>
+</form>

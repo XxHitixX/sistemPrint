@@ -31,6 +31,10 @@ export class FacturaService {
     return this.http.post<Factura>(`${this.baseUrl}/facturas/`, factura, { headers })
   }
 
+  getFactura(id : string){
+    const headers= new HttpHeaders().set('x-token', localStorage.getItem('token') || '');
+    return this.http.get<Factura>(`${this.baseUrl}/facturas/${id}`, { headers })
+  }
 
 
 }

@@ -1,4 +1,6 @@
-<h1>Facturas - <small>Lista de ventas realizadas</small></h1>
+<h1>Facturas - <small>Lista de ventas realizadas</small> 
+    <a routerLink="/protected/facturas/crearFactura"
+        class="btn btn-primary float-end">Nueva venta</a> </h1>
 <hr>
 
 <div class="spinner-border text-danger" role="status" *ngIf="!facturas; else contenido" >
@@ -25,7 +27,8 @@
                     <td> {{ factura.usuario?.nombre }} </td>
                     <td> {{ factura.tipoPago }} </td>
                     <td>{{ factura.total| currency:'COP':'symbol-narrow':'4.2-2' }}</td>
-                    <td class="text-center"> <a class="btn btn-warning"> <i class="bi bi-eye"></i></a> </td>
+                    <td class="text-center"> <a class="btn btn-warning"> 
+                        <i class="bi bi-eye" [routerLink]="['/protected/facturas/verFactura/', factura._id]"></i></a> </td>
                 </tr>
             </tbody>
         </table>

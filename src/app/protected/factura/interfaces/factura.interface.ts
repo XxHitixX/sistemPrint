@@ -1,6 +1,6 @@
 import { Usuario } from "src/app/auth/interfaces/usuario.interface";
 import { Cliente } from "../../cliente/interfaces/cliente.interface";
-import { Categoria } from "../../producto/interfaces/producto.interface";
+import { Categoria, Producto } from "../../producto/interfaces/producto.interface";
 
 export interface FacturaResponse {
     ok?:           boolean;
@@ -21,14 +21,15 @@ export interface Factura {
 }
 
 export interface itemProducto{
-    id      : string;
-    cantidad: number;
+    _id      : string;
+    cantidad ?: number;
+    producto ?: Producto;
 }
 
 export interface FacturaGuardar {
     _id?:      string;
     usuario?:  Usuario;
-    cliente?:  String;
+    cliente?:  string;
     tipoPago?: string;
     estado?:   boolean;
     total?:    number;
