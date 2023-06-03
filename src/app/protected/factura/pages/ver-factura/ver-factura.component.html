@@ -4,19 +4,46 @@
 <form [formGroup]="miFormulario">
     <div class="row mb-3">
         <span class="text-warning mb-4">Factura generada el {{ factura.fecha | date }}</span>
-        <div class="col-12">
+        <div class="col-6">
             <div class="mb-2">
                 <label for="nombre" class="text-label">Nombre</label>
                 <input type="text" formControlName="nombre" 
                         id="nombre" class="form-control"
-                        readonly>
+                        readonly/>
+            </div>
+            <div class="mb-2">
+                <label for="direccion" class="text-label">Direccion</label>
+                <input type="text" formControlName="direccion" 
+                        id="direccion" class="form-control"
+                        readonly/>
+            </div>
+            <div class="mb-2">
+                <label for="correo" class="text-label">Correo</label>
+                <input type="text" formControlName="correo" 
+                        id="correo" class="form-control"
+                        readonly/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-2">
+                <label for="cedula" class="text-label">Cedula</label>
+                <input type="text" formControlName="cedula" 
+                        id="cedula" class="form-control" 
+                        readonly/>
+            </div>
+            <div class="mb-2">
+                <label for="telefono" class="text-label">telefono</label>
+                <input type="text" formControlName="telefono" 
+                        id="telefono" class="form-control" 
+                        readonly/>
             </div>
         </div>
     
     </div>
     <div class="row">
+        <h2 class="text-center text-danger mt-4 mb-4"> ----- DETALLE DE FACTURA ----- </h2>
         <div class="col-12">
-            <table class="table">
+            <table class="table table-primary">
                 <thead>
                     <th>Item</th>
                     <th>Producto</th>
@@ -24,13 +51,13 @@
                     <th>Precio</th>
                     <th>Total</th>
                 </thead>
-                <tbody>
+                <tbody class="table-striped">
                     <tr *ngFor="let item of items; let i = index">
                         <td> {{ i + 1 }} </td>
-                        <td> {{ '' }} </td>
+                        <td> {{ item.producto.nombre }} </td>
                         <td> {{ item.cantidad }} </td>
-                        <td> {{ '' }}</td>
-                        <td> {{ '' }} </td>
+                        <td> {{ item.producto.precio }}</td>
+                        <td> {{ item.cantidad * item.producto.precio }} </td>
                     </tr>
                 </tbody>
             </table>

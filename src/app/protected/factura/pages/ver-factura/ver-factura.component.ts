@@ -31,6 +31,11 @@ export class VerFacturaComponent implements OnInit {
 
   miFormulario : FormGroup = this.fb.group({
     nombre: [''],
+    cedula: [''],
+    direccion: [''],
+    telefono: [''],
+    correo: ['']
+
   })
 
   ngOnInit(): void {
@@ -43,6 +48,10 @@ export class VerFacturaComponent implements OnInit {
         this.items = factura.items;
         console.log(factura.items);
         this.miFormulario.controls['nombre'].setValue(factura.cliente?.nombre)
+        this.miFormulario.controls['cedula'].setValue(factura.cliente?.cedula)
+        this.miFormulario.controls['direccion'].setValue(factura.cliente?.direccion)
+        this.miFormulario.controls['telefono'].setValue(factura.cliente?.telefono)
+        this.miFormulario.controls['correo'].setValue(factura.cliente?.correo)
 
       } )    
   }

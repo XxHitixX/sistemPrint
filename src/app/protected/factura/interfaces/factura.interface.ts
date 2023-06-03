@@ -10,8 +10,8 @@ export interface FacturaResponse {
 
 export interface Factura {
     _id?:      string;
-    usuario?:  Usuario;
-    cliente?:  Cliente;
+    usuario:  Usuario;
+    cliente:  Cliente;
     tipoPago?: string;
     estado?:   boolean;
     total?:    number;
@@ -22,8 +22,8 @@ export interface Factura {
 
 export interface itemProducto{
     _id      : string;
-    cantidad ?: number;
-    producto ?: Producto;
+    cantidad : number;
+    producto : Producto;
 }
 
 export interface FacturaGuardar {
@@ -37,3 +37,5 @@ export interface FacturaGuardar {
     items:    itemProducto[];
     fecha?:    string;
 }
+
+

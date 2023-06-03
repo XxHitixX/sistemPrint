@@ -1,4 +1,4 @@
-export interface getProductoResponse {
+ export interface getProductoResponse {
     ok : boolean;
     producto : Producto;
 }
@@ -12,12 +12,12 @@ export interface ProductoResponse {
 export interface Producto {
     proveedor?:   string;
     stock:       number;
-    costo?:       number;
+    costo:       number;
     _id?:         string;
     nombre:      string;
     estado?:      boolean;
     usuario?:     Categoria;
-    precio?:      number;
+    precio:      number;
     categoria?:   Categoria;
     descripcion?: string;
     disponible?:  boolean;
@@ -41,4 +41,6 @@ export interface ProductoActualizado {
     descripcion?: string;
     disponible?:  boolean;
 }
+
+
 

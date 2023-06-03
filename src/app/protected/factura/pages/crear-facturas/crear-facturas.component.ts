@@ -23,7 +23,6 @@ import { ProductoActualizado } from '../../../producto/interfaces/producto.inter
     border-color: #0d6efd;
     border-style: solid;
     border-radius: 5px;
-    background-color: lightblue;
     box-sizing: content-box;
   }
 
@@ -57,11 +56,14 @@ export class CrearFacturasComponent implements OnInit {
   productoActualizado !: ProductoActualizado;
   
 
-  total : number = 0;
-  cantidad : number = 0;
+ 
 
   @ViewChild('canti') cantida !: ElementRef<HTMLInputElement>;
   @ViewChild('ProductoFocu') productoFocus !: ElementRef<HTMLInputElement>;
+
+  total : number = 0;
+  cantidad : number = 0;
+
 
   constructor(private clienteService: ClienteService,
     private productoService: ProductoService,
@@ -83,10 +85,11 @@ export class CrearFacturasComponent implements OnInit {
     producto: ['', [Validators.required] ]
   })
 
+  
   ngOnInit(): void {
 
     this.productoService.getProductos()
-        .subscribe(producto => this.productos = producto)
+        .subscribe(producto => this.productos = producto);
   }
 
   agregarProducto() {
@@ -94,6 +97,7 @@ export class CrearFacturasComponent implements OnInit {
     this.productoService.getProducto(this.miFormulario.controls['producto'].value)
       .subscribe(producto => {
         //const cantidad = this.miFormulario.controls['cantidad'].value;
+        console.log(producto);
         this.existencias = producto.stock;
         this.productoXActualizar = producto;
 
@@ -113,7 +117,8 @@ export class CrearFacturasComponent implements OnInit {
           
           this.productoItem.push({
             _id: this.miFormulario.controls['producto'].value,
-            cantidad: this.miFormulario.controls['cantidad'].value
+            cantidad: this.miFormulario.controls['cantidad'].value,
+            producto
           })
 
           this.actualizarProducto();

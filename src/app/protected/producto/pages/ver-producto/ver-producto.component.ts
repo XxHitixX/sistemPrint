@@ -16,7 +16,11 @@ export class VerProductoComponent implements OnInit {
 
   producto : Producto = {
     nombre: '',
-    stock: 0,    
+    stock: 0,
+    _id: '',
+    costo: 0,
+    precio: 0,
+        
   };
 
   constructor(private productoService: ProductoService,
