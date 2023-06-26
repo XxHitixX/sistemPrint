@@ -56,8 +56,8 @@
                         <td> {{ i + 1 }} </td>
                         <td> {{ item.producto.nombre }} </td>
                         <td> {{ item.cantidad }} </td>
-                        <td> {{ item.producto.precio }}</td>
-                        <td> {{ item.cantidad * item.producto.precio }} </td>
+                        <td> {{ item.producto.precio | currency }}</td>
+                        <td> {{ item.cantidad * item.producto.precio | currency  }} </td>
                     </tr>
                 </tbody>
             </table>

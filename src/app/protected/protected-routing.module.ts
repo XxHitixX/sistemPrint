@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { MainComponent } from './main/main.component';
-import { ClientesComponent } from './cliente/pages/clientes/clientes.component';
+
 
 const routes: Routes = [
   {
@@ -28,6 +27,10 @@ const routes: Routes = [
       {
         path: 'categorias',
         loadChildren: () => import('./categoria/categoria.module').then(m => m.CategoriaModule)
+      },
+      {
+        path: 'buscador',
+        loadChildren: () => import('./buscador/buscador.module').then(m => m.BuscadorModule)
       },
       { path: '**', redirectTo: 'clientes' },
       

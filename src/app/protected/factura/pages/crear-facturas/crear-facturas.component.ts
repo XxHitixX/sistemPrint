@@ -121,7 +121,7 @@ export class CrearFacturasComponent implements OnInit {
             producto
           })
 
-          this.actualizarProducto();
+         // this.actualizarProducto();
       
           this.productoFocus.nativeElement.focus();
 
@@ -153,6 +153,8 @@ export class CrearFacturasComponent implements OnInit {
             Swal.fire('Actualización exitosa.', '', 'success');
             this.router.navigateByUrl('protected/facturas');
           });
+          
+    this.actualizarProducto();
     
           
 
@@ -185,12 +187,12 @@ actualizarProducto(){
     }
     
     this.productoService.actualizarProducto(this.miFormulario.controls['producto'].value, this.productoActualizado)
-        .subscribe(resp =>{
-          console.log(this.miFormulario.controls['producto'].value);
-          console.log("==================================");
-          console.log(resp);
-        }  )
+        .subscribe()
 
+}
+
+cancelarVenta(){
+    
 }
 
 }

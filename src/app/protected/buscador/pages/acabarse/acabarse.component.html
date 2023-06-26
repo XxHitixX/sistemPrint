@@ -1,0 +1,20 @@
+<h1>Listas de productos por terminarse <span style="color: red"> {{ '<10' }} </span> </h1>
+<hr/>
+<div class="row">
+    <table class="table">
+        <thead>
+            <th>#</th>
+            <th>Producto</th>
+            <th>Costo</th>
+            <th>Existencias</th>
+        </thead>
+        <tbody *ngFor="let producto of productos; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.costo | currency}}</td>
+            <td>{{producto.stock}}</td>
+        </tbody>
+    </table>
+    
+</div>
+<a class="btn btn-success float-end">Imprimir</a>    

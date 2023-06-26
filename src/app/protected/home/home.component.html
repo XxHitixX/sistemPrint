@@ -12,7 +12,7 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos -10</a>
+            <a class="nav-link" routerLink="/protected/buscador/acabarse">Productos -10</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Reportes</a>
@@ -31,7 +31,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#"> Usuario ({{ usuario.nombre | uppercase }}) </a></li>
+              <li><a class="dropdown-item" href="#"> Usuario ({{ usuario.nombre }}) </a></li>
               <li><a class="dropdown-item" (click)="cerrarSesion()"> Cerrar sesión </a></li>
             </ul>
           </li>
